@@ -135,6 +135,7 @@ def main():
     if args.launcher == 'none':
         distributed = False
     else:
+        os.environ['RANK'] = str(0)
         distributed = True
         init_dist(args.launcher, **cfg.dist_params)
         # re-set gpu_ids with distributed training mode
